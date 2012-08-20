@@ -59,6 +59,19 @@ Class Member_model extends CI_Model {
 		echo $this->session->userdata('id');
 		echo $this->session->userdata('pw');
 	}
+
+	function goodbye_user_db(){
+			
+		$id = $this->session->userdata('id');
+		$sql = "delete from Member where id='$id'";
+		$query = $this->db->query($sql);
+		echo "delete complete";
+	
+	
+	}
+
+
+
 }
 
 
