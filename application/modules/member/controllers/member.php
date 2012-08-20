@@ -1,61 +1,71 @@
-
 <?php 
-
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Member extends MX_Controller{
 
-
-
-	function index() {
-
-		$this->load->view('member/index');
-
+	
+	
+	
+	function __construct() {
+		parent::__construct();
+		$this->load->library('session');
+		$this->load->helper('url');
 	}
 	
-	function join_page() {
 	
+	function index(){
+
+		$this->load->view('index');
+
+	}
+
+	function login(){
+
+		$this->load->model('member_model','',TRUE);
+		$this->member_model->login_db();
+
+
+
+
+		$user_info = array(
+				'id'  => $_POST['id'],
+				'pw'  => $_POST['pw'],
+		);
+
+		$this->session->set_userdata($user_info);
+
+
+		$this->load->view('main');
+
+			
+	}
+
+	function join_page(){
+
 		$this->load->view('join_page');
-	
 	}
-	
-	function join_db(){
-	
-		$this->load->model('member_model','', TRUE);
+
+	function join_user(){
+
+		$this->load->model('member_model','',TRUE);
+		$this->member_model->join_user_db();
+		$this->load->view('index');
+
+	}
+
+	function modify_user(){
 			
-	
-			
-	//	$data['result']= $this->member_model->join();
-			
-		$this->member_model->join(); 
-		
-		$this->load->view('member/index');
-			
+
+		$this->load->model('member_model','',TRUE);
+		$this->member_model->modify_user_db();
 	}
-	
-	function login() {
-	
-		$this->load->model('member_model','', TRUE);
-		
-		$this->member_model->login();
-		
-	
+
+	function goodbye_user(){
+
+		$this->load->model('member_model','',TRUE);
+		$this->member_model->goodbye_user_db();
+
 	}
-	
-	function modify() {
-		
-		$this->load->view('modify_page');
-		
-	}
-	
-	function login_leave(){
-		$id = $_POST['id'];
-		$this->load->model('member_model',$id);
-		$this->member_model->leave();
-		$this->load->view('/index.php/member/login_leave');
-		
-	}
-	
 }
 
 ?>

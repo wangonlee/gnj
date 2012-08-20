@@ -3,7 +3,7 @@
 <title>Join</title>
 </head>
 <body>
-	<form action="member/join_db" method="post">
+	<form action="join_db" method="post">
 		 
 		ID<input type="text" name="id"><br> 
 		
@@ -18,7 +18,7 @@
 		<input type="reset" value="Reset">
 		
 <!-- 		Backbutton -->
-		<input type="button" value="Back" onClick="location.href='http://localhost:8888/codeIgniter_2.1.2/index.php/member'">
+		<input type="button" value="Back" onClick="location.href='index'">
 
 
 	</form>
