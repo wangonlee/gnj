@@ -2,7 +2,7 @@
 <head>
 <title>Login page</title></head>
 <body>
-<form action="login" method="post" >
+<form action="member/login" method="post" >
     
     ID<input type="text" name="id"><br>
     Password<input type="text" name="pw"><br>
