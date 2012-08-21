@@ -22,18 +22,27 @@ class Member extends MX_Controller{
 	function login(){
 
 		$this->load->model('member_model','',TRUE);
-		$this->member_model->login_db();
+		$this->member_model->login_m();
+		
+		$this->member_model->aa();
 
 
+		
 
 
+	;
+		
 		$user_info = array(
 				'id'  => $_POST['id'],
 				'pw'  => $_POST['pw'],
+				
+					
 		);
-
+			
 		$this->session->set_userdata($user_info);
-
+		
+		
+		
 
 		$this->load->view('main');
 
@@ -45,26 +54,51 @@ class Member extends MX_Controller{
 		$this->load->view('join_page');
 	}
 
-	function join_user(){
-
-		$this->load->model('member_model','',TRUE);
-		$this->member_model->join_user_db();
-		$this->load->view('index');
-
-	}
+	
 
 	function modify_user(){
-			
-
 		$this->load->model('member_model','',TRUE);
-		$this->member_model->modify_user_db();
-	}
+		$this->member_model->get_userdata_m();
+		$this->load->view('modify_user');
+		
+		
+		}
+		
+		function modifyok_user(){
+		
+			$this->load->model('member_model','',TRUE);
+			$this->member_model->modify_user_m();
+			$this->load->view('modifyok_user');
+		}
+		
 
 	function goodbye_user(){
 
 		$this->load->model('member_model','',TRUE);
-		$this->member_model->goodbye_user_db();
+		$this->member_model->goodbye_user_m();
 
+	}
+	
+	function check_userinfo(){
+		$this->load->model('member_model','',TRUE);
+		
+		//ID Check
+		
+		
+		
+		
+		if($_POST['pw']== $_POST['repw']){
+	
+			$this->member_model->save_userdata_m();
+			$this->load->view('index');	}
+		else{
+			echo ("<script>
+					alert('Please Enter Correct Password and RePassword!')
+					</script>");
+			$this->load->view('join_page');
+		}
+		
+		
 	}
 }
 

@@ -3,17 +3,32 @@
 <title>Seageul Style</title>
 </head>
 <body>
-hello<br>
+<br>
 <form action="modify_user" method="post" >
 
 <?php 
-echo $this->session->userdata('id');
 
+$this->load->helper('form');
+$this->load->helper('html');
+
+
+echo "User Data";
+echo br(2);
+
+echo "ID : ";
+echo $this->session->userdata('id');
+echo br(1);
+
+echo "NAME : ";
+echo $this->session->userdata('name');
+echo br(3);
+
+
+echo form_submit('mysubmit', 'Modify');
 ?>
 
-    <input type="submit" value="Modify">
-    <input type="button" value="Goodbye" onClick="location.href='goodbye_user'">
-       
+    
+       	<a href='goodbye_user'> <?php 	echo form_button('mybutton','Goodbye')?></a>
 </form>
 
 

@@ -1,16 +1,34 @@
 <html>
 <head>
-<title>Login page</title></head>
+<title>Login page</title>
+</head>
 <body>
-<form action="member/login" method="post" >
-    
-    ID<input type="text" name="id"><br>
-    Password<input type="text" name="pw"><br>
+<form action="login" method="post">
+		
+		<?php 
+		$this->load->helper('form');
+		$this->load->helper('html');
+		
+		echo "ID";
+		echo form_input('id');
+		echo br(1);
+		
+		echo "PW";
+		echo form_input('pw');
+		echo br(1);
+		
+		echo form_submit('mysubmit', 'Login');	//로그인버튼
+
+		//가입버튼
+		?>
+		<a href='join_page'> <?php 
+		echo form_button('mybutton','Join')
+		?>
+		</a>
 	
-    <input type="submit" value="Login">
-    <input type="button" value="Join" onClick="location.href='join_page'">
-       
-</form>
+	
+	
+</form>	
 </body>
 </html>
 
