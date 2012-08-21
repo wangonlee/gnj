@@ -4,7 +4,7 @@
 </head>
 <body>
 <form action="login" method="post">
-		welcome to Saegeul!!
+		welcome to Saegeul!!<br>
 		<?php 
 		$this->load->helper('form');
 		$this->load->helper('html');

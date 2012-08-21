@@ -13,31 +13,21 @@ Class Member_model extends CI_Model {
 		$id = $_POST['id'];
 		$pw = $_POST['pw'];
 
-		$sql = "select pw from Member where id='$id'";
+		$sql = "select name from Member where id='$id' and pw='$pw'";
 		$query = $this->db->query($sql);
-
-
+						
+		return $query->num_rows();
+		
 			
-		foreach ($query->result() as $row)
-		{
-			$pw_db= $row->pw;
+// 		foreach ($query->result() as $row)
+// 		{
+// 			$pw_db= $row->pw;
 
-		}
-
-		if($pw == $pw_db){
-				
-
-		}
-
-		else if($pw != $pw_db)
-		{
-			$this->load->view('index');
-		}
-
-		else if($pw == NULL || $id == NULL)
-		{
-			$this->load->view('index');
-		}
+// 		}
+		
+		
+		
+	
 			
 	}
 

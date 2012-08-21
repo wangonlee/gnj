@@ -22,29 +22,24 @@ class Member extends MX_Controller{
 	function login(){
 
 		$this->load->model('member_model','',TRUE);
-		$this->member_model->login_m();
 		
-		$this->member_model->aa();
-
-
 		
-
-
-	;
+		if(!$this->member_model->login_m()){
+			//아이디 또는 비밀번호가 올바르지 않은 경우
+			echo ("<script>
+					alert('Please Enter Correct ID and Password!')
+					</script>");
 		
-		$user_info = array(
-				'id'  => $_POST['id'],
-				'pw'  => $_POST['pw'],
+			$this->load->view('index');
 				
-					
-		);
-			
-		$this->session->set_userdata($user_info);
+		}
+		else{
+				
+			$this->load->view('main');
+		}
 		
 		
-		
-
-		$this->load->view('main');
+	
 
 			
 	}
